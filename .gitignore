@@ -1,0 +1,11 @@
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+tenGeVmagnet
+Makefile
+result*
+*.jpg
+*.pdf
+IBT
+G4History.macro
+test/
