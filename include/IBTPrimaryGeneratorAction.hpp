@@ -6,6 +6,7 @@
 #include <G4ThreeVector.hh>
 #include <G4Threading.hh>
 #include <G4Event.hh>
+#include <G4GenericMessenger.hh>
 
 
 class IBTPrimaryGeneratorAction: public G4VUserPrimaryGeneratorAction
@@ -20,6 +21,20 @@ private:
    G4ParticleGun *fParticleGun;
    G4double fZPosition;
    G4bool fFirstFlag;
+
+   // Ion parameters
+   void SetIon();
+   G4int fZ;
+   G4int fA;
+   G4double fIonCharge;
+   G4double fExcitEnergy;
+
+   // Commands
+   void DefineCommands();
+   G4GenericMessenger *fMessenger;
+   // Changing Ion 
+   void SetIonCmd(G4String name);
+   
 };
 
 #endif
