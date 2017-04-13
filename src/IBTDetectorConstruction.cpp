@@ -62,7 +62,7 @@ G4VPhysicalVolume *IBTDetectorConstruction::Construct()
 
    G4Box *airS = new G4Box("Air", airW / 2., airH / 2., fAirT / 2.);
    G4LogicalVolume *airLV = new G4LogicalVolume(airS, fAirMat, "Air");
-   visAttributes = new G4VisAttributes(G4Colour::Magenta());
+   visAttributes = new G4VisAttributes(G4Colour::Cyan());
    airLV->SetVisAttributes(visAttributes);
    fVisAttributes.push_back(visAttributes);
 
