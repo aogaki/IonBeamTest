@@ -13,13 +13,16 @@ static G4int nEveInPGA = 0; // Global variable change to local?
 G4Mutex mutexInPGA = G4MUTEX_INITIALIZER;
 
 
-IBTPrimaryGeneratorAction::IBTPrimaryGeneratorAction()
+IBTPrimaryGeneratorAction::IBTPrimaryGeneratorAction(G4bool monoFlag, G4double ene)
    : G4VUserPrimaryGeneratorAction(),
      fParticleGun(nullptr),
      fMessenger(nullptr)
 {
    fFirstFlag = true;
    fZPosition = -300.*mm;
+
+   fMonoFlag = monoFlag;
+   fEnergy = ene;
    
    fZ = 6;
    fA = 12;
@@ -53,7 +56,9 @@ void IBTPrimaryGeneratorAction::GeneratePrimaries(G4Event *event)
       SetIon();
    }
 
-   G4double ene = G4RandExponential::shoot(100)*MeV;
+   G4double ene;
+   if(fMonoFlag) ene = fEnergy;
+   else ene = G4RandExponential::shoot(100)*MeV;
    fParticleGun->SetParticleEnergy(ene);
    fParticleGun->GeneratePrimaryVertex(event);
 

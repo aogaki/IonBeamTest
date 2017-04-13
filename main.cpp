@@ -27,9 +27,18 @@
 int main(int argc, char **argv)
 {
    G4String macro = "";
-   for (G4int i = 1; i < argc; i++) {
-      if (G4String(argv[i]) == "-m")
-         macro = argv[++i];
+   G4bool monoFlag = false;
+   G4double ene = 0.;
+   for(G4int i = 1; i < argc; i++) {
+      if(G4String(argv[i]) == "-m"){
+         if(++i < argc) macro = argv[i];
+         else G4cout << "eneter macro file name!" << G4endl;
+      }
+      else if(G4String(argv[i]) == "-e"){
+         monoFlag = true;
+         if(++i < argc) ene = std::stod(argv[i]);
+         else G4cout << "eneter kinetic energy!" << G4endl;
+      }
    }
    
    // Choose the Random engine
@@ -55,7 +64,7 @@ int main(int argc, char **argv)
    runManager->SetUserInitialization(physicsList);
 
    // Primary generator action and User action intialization
-   runManager->SetUserInitialization(new IBTActionInitialization());
+   runManager->SetUserInitialization(new IBTActionInitialization(monoFlag, ene));
 
    // Initialize G4 kernel
    //

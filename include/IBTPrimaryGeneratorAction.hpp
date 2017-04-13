@@ -12,7 +12,7 @@
 class IBTPrimaryGeneratorAction: public G4VUserPrimaryGeneratorAction
 {
 public:
-   IBTPrimaryGeneratorAction();
+   IBTPrimaryGeneratorAction(G4bool monoFlag, G4double ene);
    virtual ~IBTPrimaryGeneratorAction();
 
    virtual void GeneratePrimaries(G4Event *);
@@ -22,6 +22,9 @@ private:
    G4double fZPosition;
    G4bool fFirstFlag;
 
+   G4bool fMonoFlag;
+   G4double fEnergy;
+   
    // Ion parameters
    void SetIon();
    G4int fZ;
