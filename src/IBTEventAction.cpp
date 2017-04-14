@@ -36,6 +36,7 @@ void IBTEventAction::BeginOfEventAction(const G4Event *)
 
 void IBTEventAction::EndOfEventAction(const G4Event *event)
 {
+
    if (fHitsCollectionID == -1)
       fHitsCollectionID = G4SDManager::GetSDMpointer()->GetCollectionID("HC");
    

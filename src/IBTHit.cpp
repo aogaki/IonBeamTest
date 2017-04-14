@@ -18,7 +18,7 @@ IBTHit::IBTHit()
      fTime(0),
      fPosition(0),
      fMomentum(0),
-     fIsExit(0),
+     fIsExit(false),
      fVolumeName("")
 {}
 

@@ -22,6 +22,7 @@
 
 #include "IBTDetectorConstruction.hpp"
 #include "IBTActionInitialization.hpp"
+#include "IBTPhysicsList.hpp"
 
 
 int main(int argc, char **argv)
@@ -59,7 +60,8 @@ int main(int argc, char **argv)
    runManager->SetUserInitialization(new IBTDetectorConstruction());
 
    // Physics list
-   G4VModularPhysicsList *physicsList = new QGSP_BIC_HP();
+   //G4VModularPhysicsList *physicsList = new QGSP_BIC_HP();
+   G4VModularPhysicsList *physicsList = new IBTPhysicsList();
    physicsList->SetVerboseLevel(0);
    runManager->SetUserInitialization(physicsList);
 

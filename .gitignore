@@ -4,6 +4,7 @@ cmake_install.cmake
 tenGeVmagnet
 Makefile
 result*
+*.root
 *.jpg
 *.pdf
 IBT

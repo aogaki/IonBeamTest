@@ -34,13 +34,16 @@ void IBTSD::Initialize(G4HCofThisEvent *hce)
 
 G4bool IBTSD::ProcessHits(G4Step *step, G4TouchableHistory */*history*/)
 {
-   //if(!step->IsLastStepInVolume()) return false; // only the last step
    G4Track *track = step->GetTrack();   
    G4int trackID = track->GetTrackID();
-   //if(trackID != 1) return false; // only the primal particle
+   if(trackID != 1) return false; // only the primal particle
 
+   G4StepPoint *postStepPoint = step->GetPostStepPoint();
+   G4int isExit = (postStepPoint->GetStepStatus() == fGeomBoundary);
+   if(isExit == 0) return false; // only going out particle
    IBTHit *newHit = new IBTHit();
-
+   newHit->SetIsExit(isExit);
+      
    newHit->SetTrackID(trackID);
    
    G4StepPoint *preStepPoint = step->GetPreStepPoint();
@@ -53,13 +56,9 @@ G4bool IBTSD::ProcessHits(G4Step *step, G4TouchableHistory */*history*/)
    }
    else newHit->SetIncidentEnergy(0.);
    
-   G4StepPoint *postStepPoint = step->GetPostStepPoint();
    G4ThreeVector position =  postStepPoint->GetPosition();
    newHit->SetPosition(position);
    
-   G4int isExit = (postStepPoint->GetStepStatus() == fGeomBoundary);
-   newHit->SetIsExit(isExit);
-      
    G4double kineticEnergy = postStepPoint->GetKineticEnergy();
    newHit->SetKineticEnergy(kineticEnergy);
 

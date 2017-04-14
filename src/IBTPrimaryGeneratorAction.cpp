@@ -26,7 +26,7 @@ IBTPrimaryGeneratorAction::IBTPrimaryGeneratorAction(G4bool monoFlag, G4double e
    
    fZ = 6;
    fA = 12;
-   fIonCharge   = 0.*eplus;
+   fIonCharge   = 6.*eplus;
    fExcitEnergy = 0.*keV;
 
    G4int nPar = 1;
@@ -78,6 +78,9 @@ void IBTPrimaryGeneratorAction::SetIon()
       = G4IonTable::GetIonTable()->GetIon(fZ, fA, fExcitEnergy);
    fParticleGun->SetParticleDefinition(ion);
    fParticleGun->SetParticleCharge(fIonCharge);
+   G4cout << "Ion changed\tZ = " << fZ
+          << ", A = " << fA
+          << ", Charge = " << fIonCharge << G4endl;
 }
 
 void IBTPrimaryGeneratorAction::DefineCommands()
@@ -99,22 +102,27 @@ void IBTPrimaryGeneratorAction::SetIonCmd(G4String ionName)
    if(ionName == "test"){
       fZ = 100;
       fA = 200;
+      fIonCharge   = 100.*eplus;
    }      
    else if(ionName == "He"){
       fZ = 2;
       fA = 4;
+      fIonCharge   = 2.*eplus;
    }
    else if(ionName == "C"){
       fZ = 6;
       fA = 12;
+      fIonCharge   = 6.*eplus;
    }
    else if(ionName == "O"){
       fZ = 8;
       fA = 16;
+      fIonCharge   = 8.*eplus;
    }
    else if(ionName == "Fe"){
       fZ = 26;
       fA = 56; // Only integer is accepted.  A is 55.845
+      fIonCharge   = 26.*eplus;
    }
    else{
       G4cout << "Now, only He, C, O, and Fe is acceptable." << G4endl;

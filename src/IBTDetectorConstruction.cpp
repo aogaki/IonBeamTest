@@ -82,11 +82,11 @@ G4VPhysicalVolume *IBTDetectorConstruction::Construct()
    fVisAttributes.push_back(visAttributes);
 
    G4ThreeVector kaptonPos1 = G4ThreeVector(0., 0., -(fAirT + fKaptonT) / 2.);
-   new G4PVPlacement(nullptr, kaptonPos1, kaptonLV, "Kapton", worldLV,
+   new G4PVPlacement(nullptr, kaptonPos1, kaptonLV, "Kapton1", worldLV,
                      false, 0, fCheckOverlap);
 
    G4ThreeVector kaptonPos2 = G4ThreeVector(0., 0., (fAirT + fKaptonT) / 2.);
-   new G4PVPlacement(nullptr, kaptonPos2, kaptonLV, "Kapton", worldLV,
+   new G4PVPlacement(nullptr, kaptonPos2, kaptonLV, "Kapton2", worldLV,
                      false, 1, fCheckOverlap);
 
 
@@ -95,6 +95,7 @@ G4VPhysicalVolume *IBTDetectorConstruction::Construct()
 
 void IBTDetectorConstruction::ConstructSDandField()
 {
+
    // Sensitive Detectors
    G4VSensitiveDetector *SD = new IBTSD("SD", "HC");
    G4SDManager::GetSDMpointer()->AddNewDetector(SD);
@@ -105,4 +106,5 @@ void IBTDetectorConstruction::ConstructSDandField()
          lv->GetName().contains("Kapton"))
          SetSensitiveDetector(lv->GetName(), SD);
    }
+
 }
