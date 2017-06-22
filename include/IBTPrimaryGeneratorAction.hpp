@@ -19,25 +19,10 @@ public:
 
 private:
    G4ParticleGun *fParticleGun;
-   G4double fZPosition;
-   G4bool fFirstFlag;
 
    G4bool fMonoFlag;
    G4double fEnergy;
-   
-   // Ion parameters
-   void SetIon();
-   G4int fZ;
-   G4int fA;
-   G4double fIonCharge;
-   G4double fExcitEnergy;
 
-   // Commands
-   void DefineCommands();
-   G4GenericMessenger *fMessenger;
-   // Changing Ion 
-   void SetIonCmd(G4String name);
-   
 };
 
 #endif

@@ -27,37 +27,21 @@ public:
    void SetKineticEnergy(G4double ene) {fKineticEnergy = ene;};
    G4double GetKineticEnergy() {return fKineticEnergy;};
 
-   void SetIncidentEnergy(G4double ene) {fIncidentEnergy = ene;};
-   G4double GetIncidentEnergy() {return fIncidentEnergy;};
-
-   void SetDepositEnergy(G4double ene) {fDepositEnergy = ene;};
-   G4double GetDepositEnergy() {return fDepositEnergy;};
-
    void SetPosition(G4ThreeVector pos) {fPosition = pos;};
    G4ThreeVector GetPosition() {return fPosition;};
    
    void SetMomentum(G4ThreeVector p) {fMomentum = p;};
    G4ThreeVector GetMomentum() {return fMomentum;};
    
-   void SetIsExit(G4int flag) {fIsExit = flag;};
-   G4int GetIsExit() {return fIsExit;};
-   
-   void SetVolumeName(G4String volumeName) {fVolumeName = volumeName;};
-   G4String GetVolumeName() {return fVolumeName;};
-
-   void SetTime(G4double time) {fTime = time;};
-   G4double GetTime() {return fTime;};
+   void SetPDGCode(G4int code) {fPDGCode = code;};
+   G4int GetPDGCode() {return fPDGCode;};
 
 private:
    G4int fTrackID;
    G4double fKineticEnergy;
-   G4double fIncidentEnergy;
-   G4double fDepositEnergy;
-   G4double fTime;
    G4ThreeVector fPosition;
    G4ThreeVector fMomentum;
-   G4int fIsExit;
-   G4String fVolumeName;
+   G4int fPDGCode;
 };
 
 typedef G4THitsCollection<IBTHit> IBTHitsCollection;

@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "/run/beamOn 1000000" > tmp.mac
-
-./E6ES -m tmp.mac -d 2 -c 1
-hadd -f collimator.root result_t*
+for((i=1;i<=10;i++))
+do
+    echo $i
+    echo $((i * 10))
+done

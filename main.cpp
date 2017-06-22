@@ -36,9 +36,11 @@ int main(int argc, char **argv)
          else G4cout << "eneter macro file name!" << G4endl;
       }
       else if(G4String(argv[i]) == "-e"){
-         monoFlag = true;
          if(++i < argc) ene = std::stod(argv[i]);
          else G4cout << "eneter kinetic energy!" << G4endl;
+      }
+      else if(G4String(argv[i]) == "-mono"){
+         monoFlag = true;
       }
    }
    

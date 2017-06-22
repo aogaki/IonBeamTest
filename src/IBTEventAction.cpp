@@ -49,41 +49,29 @@ void IBTEventAction::EndOfEventAction(const G4Event *event)
    const G4int kHit = hc->entries();
    for (G4int iHit = 0; iHit < kHit; iHit++) {
       IBTHit *newHit = (*hc)[iHit];
-
-      anaMan->FillNtupleIColumn(0, 0, eventID); // EventID
+      
+      anaMan->FillNtupleIColumn(0, eventID); // EventID
 
       G4int trackID = newHit->GetTrackID();
-      anaMan->FillNtupleIColumn(0, 1, trackID);
-
-      G4String volumeName = newHit->GetVolumeName();
-      anaMan->FillNtupleSColumn(0, 2, volumeName);
+      anaMan->FillNtupleIColumn(1, trackID);
 
       G4double kineticEnergy = newHit->GetKineticEnergy();
-      anaMan->FillNtupleDColumn(0, 3, kineticEnergy);
+      anaMan->FillNtupleDColumn(2, kineticEnergy);
 
       G4ThreeVector position = newHit->GetPosition();
-      anaMan->FillNtupleDColumn(0, 4, position.x());
-      anaMan->FillNtupleDColumn(0, 5, position.y());
-      anaMan->FillNtupleDColumn(0, 6, position.z());
+      anaMan->FillNtupleDColumn(3, position.x());
+      anaMan->FillNtupleDColumn(4, position.y());
+      anaMan->FillNtupleDColumn(5, position.z());
 
       G4ThreeVector momentum = newHit->GetMomentum();
-      anaMan->FillNtupleDColumn(0, 7, momentum.x());
-      anaMan->FillNtupleDColumn(0, 8, momentum.y());
-      anaMan->FillNtupleDColumn(0, 9, momentum.z());
+      anaMan->FillNtupleDColumn(6, momentum.x());
+      anaMan->FillNtupleDColumn(7, momentum.y());
+      anaMan->FillNtupleDColumn(8, momentum.z());
 
-      G4double depositEnergy = newHit->GetDepositEnergy();
-      anaMan->FillNtupleDColumn(0, 10, depositEnergy);
+      G4int code = newHit->GetPDGCode();
+      anaMan->FillNtupleIColumn(9, code);
 
-      G4double incidentEnergy = newHit->GetIncidentEnergy();
-      anaMan->FillNtupleDColumn(0, 11, incidentEnergy);
-
-      G4int isExit = newHit->GetIsExit();
-      anaMan->FillNtupleIColumn(0, 12, isExit);
-
-      G4double time = newHit->GetTime();
-      anaMan->FillNtupleDColumn(0, 13, time);
-
-      anaMan->AddNtupleRow(0);
+      anaMan->AddNtupleRow();
    }
 
 }

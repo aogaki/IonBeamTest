@@ -1,23 +1,57 @@
 #!/bin/bash
 
-ionArray=(He C O Fe)
-eneArray=(20 40 60 80 100 120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500 520 540 560 580 600 620 640 660 680 700 720 740 760 780 800 820 840 860 880 900 920 940 960 980 1000)
+name="H"
+Z="1"
+A="1"
+charge="1"
 
-for ion in ${ionArray[@]}
-do
-    echo "/IBT/Primary/ionName $ion" > tmp.mac
-    echo "/run/beamOn 1000000" >> tmp.mac
-    ./IBT -m tmp.mac
-    hadd -f $ion.root result_t*
-done
+./run.sh $name $Z $A $charge
 
-for ion in ${ionArray[@]}
-do
-    for ene in ${eneArray[@]}
-    do
-	echo "/IBT/Primary/ionName $ion" > tmp.mac
-	echo "/run/beamOn 1000000" >> tmp.mac
-	./IBT -e $ene -m tmp.mac
-	hadd -f "$ion""$ene"MeV.root result_t*
-    done
-done
+name="He"
+Z="2"
+A="4"
+charge="2"
+
+./run.sh $name $Z $A $charge
+
+name="C"
+Z="6"
+A="12"
+charge="6"
+
+./run.sh $name $Z $A $charge
+
+name="O"
+Z="8"
+A="16"
+charge="8"
+
+./run.sh $name $Z $A $charge
+
+name="Ne"
+Z="10"
+A="20"
+charge="10"
+
+./run.sh $name $Z $A $charge
+
+name="Si"
+Z="14"
+A="28"
+charge="14"
+
+./run.sh $name $Z $A $charge
+
+name="Ca"
+Z="20"
+A="40"
+charge="20"
+
+./run.sh $name $Z $A $charge
+
+name="Fe"
+Z="26"
+A="56"
+charge="26"
+
+./run.sh $name $Z $A $charge
