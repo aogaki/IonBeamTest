@@ -6,6 +6,7 @@ project(IBT)
 # I wanna compile with C++11 and speed! Aogaki
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 add_definitions("-std=c++11 -march=native -mtune=native")    
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 #----------------------------------------------------------------------------
 # Find Geant4 package, activating all available UI and Vis drivers by default

@@ -14,18 +14,18 @@ IBTRunAction::IBTRunAction()
 
    // Particle information, when exit
    anaMan->CreateNtuple("IBT", "Ion beam test");
-   anaMan->CreateNtupleIColumn("EventID");
+   // anaMan->CreateNtupleIColumn("EventID");
    anaMan->CreateNtupleIColumn("TrackID");
    
    anaMan->CreateNtupleDColumn("KineticEnergy");
    
-   anaMan->CreateNtupleDColumn("x");
-   anaMan->CreateNtupleDColumn("y");
-   anaMan->CreateNtupleDColumn("z");
+   //anaMan->CreateNtupleDColumn("x");
+   //anaMan->CreateNtupleDColumn("y");
+   //anaMan->CreateNtupleDColumn("z");
 
-   anaMan->CreateNtupleDColumn("Px");
-   anaMan->CreateNtupleDColumn("Py");
-   anaMan->CreateNtupleDColumn("Pz");
+   //anaMan->CreateNtupleDColumn("Px");
+   //anaMan->CreateNtupleDColumn("Py");
+   //anaMan->CreateNtupleDColumn("Pz");
    
    anaMan->CreateNtupleIColumn("PDGCode");
 
@@ -33,9 +33,9 @@ IBTRunAction::IBTRunAction()
    anaMan->FinishNtuple();
 
    // Init parameters
-   anaMan->CreateNtuple("InitPar", "Initial Parameters");
-   anaMan->CreateNtupleIColumn("EventID");
-   anaMan->CreateNtupleDColumn("KineticEnergy");
+   //anaMan->CreateNtuple("InitPar", "Initial Parameters");
+   //anaMan->CreateNtupleIColumn("EventID");
+   //anaMan->CreateNtupleDColumn("KineticEnergy");
 
    anaMan->FinishNtuple();
 

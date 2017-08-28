@@ -42,34 +42,30 @@ void IBTEventAction::EndOfEventAction(const G4Event *event)
    
    IBTHitsCollection *hc = GetHitsCollection(fHitsCollectionID, event);
    
-   G4int eventID = event->GetEventID();
-
    G4AnalysisManager *anaMan = G4AnalysisManager::Instance();
 
    const G4int kHit = hc->entries();
    for (G4int iHit = 0; iHit < kHit; iHit++) {
       IBTHit *newHit = (*hc)[iHit];
       
-      anaMan->FillNtupleIColumn(0, eventID); // EventID
-
       G4int trackID = newHit->GetTrackID();
-      anaMan->FillNtupleIColumn(1, trackID);
+      anaMan->FillNtupleIColumn(0, trackID);
 
       G4double kineticEnergy = newHit->GetKineticEnergy();
-      anaMan->FillNtupleDColumn(2, kineticEnergy);
+      anaMan->FillNtupleDColumn(1, kineticEnergy);
 
-      G4ThreeVector position = newHit->GetPosition();
-      anaMan->FillNtupleDColumn(3, position.x());
-      anaMan->FillNtupleDColumn(4, position.y());
-      anaMan->FillNtupleDColumn(5, position.z());
+      //G4ThreeVector position = newHit->GetPosition();
+      //anaMan->FillNtupleDColumn(3, position.x());
+      //anaMan->FillNtupleDColumn(4, position.y());
+      //anaMan->FillNtupleDColumn(5, position.z());
 
-      G4ThreeVector momentum = newHit->GetMomentum();
-      anaMan->FillNtupleDColumn(6, momentum.x());
-      anaMan->FillNtupleDColumn(7, momentum.y());
-      anaMan->FillNtupleDColumn(8, momentum.z());
+      //G4ThreeVector momentum = newHit->GetMomentum();
+      //anaMan->FillNtupleDColumn(6, momentum.x());
+      //anaMan->FillNtupleDColumn(7, momentum.y());
+      //anaMan->FillNtupleDColumn(8, momentum.z());
 
       G4int code = newHit->GetPDGCode();
-      anaMan->FillNtupleIColumn(9, code);
+      anaMan->FillNtupleIColumn(2, code);
 
       anaMan->AddNtupleRow();
    }

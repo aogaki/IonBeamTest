@@ -38,18 +38,19 @@ G4bool IBTSD::ProcessHits(G4Step *step, G4TouchableHistory */*history*/)
    G4int trackID = track->GetTrackID();
 
    G4StepPoint *postStepPoint = step->GetPostStepPoint();
-   if(postStepPoint->GetStepStatus() == fGeomBoundary) return false; // only going out particle
-
+   if(postStepPoint->GetStepStatus() != fGeomBoundary) return false; // only going out particle
+   G4ThreeVector position =  postStepPoint->GetPosition();
+   if(position[2] < 10.*cm) return false;
+   
    IBTHit *newHit = new IBTHit();
    
    newHit->SetTrackID(trackID);
    
    G4ParticleDefinition *particle = track->GetDefinition();
    G4int pdgCode = particle->GetPDGEncoding();
-   //if(pdgCode != 22) return false;
    newHit->SetPDGCode(pdgCode);
 
-   G4ThreeVector position =  postStepPoint->GetPosition();
+
    newHit->SetPosition(position);
    
    G4double kineticEnergy = postStepPoint->GetKineticEnergy();
