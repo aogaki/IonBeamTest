@@ -13,13 +13,9 @@ IBTHit::IBTHit()
    : G4VHit(),
      fTrackID(0),
      fKineticEnergy(0),
-     fIncidentEnergy(0),
-     fDepositEnergy(0),
-     fTime(0),
      fPosition(0),
      fMomentum(0),
-     fIsExit(false),
-     fVolumeName("")
+     fPDGCode(0)
 {}
 
 IBTHit::~IBTHit()

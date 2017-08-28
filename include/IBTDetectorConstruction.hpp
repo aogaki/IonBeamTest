@@ -24,11 +24,7 @@ private:
    // Materials
    void DefineMaterials();
    G4Material *fVacuumMat;
-   G4Material *fAirMat;
-   G4Material *fKaptonMat;
-   
-   G4double fKaptonT;
-   G4double fAirT;
+   G4Material *fWallMat;
    
    std::vector<G4VisAttributes *> fVisAttributes;
 

@@ -7,6 +7,10 @@ result*
 *.root
 *.jpg
 *.pdf
+*.d
+*.so
+*.pcm
+*~
 IBT
 G4History.macro
 test/

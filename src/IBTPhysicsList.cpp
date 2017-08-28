@@ -39,7 +39,7 @@ IBTPhysicsList::IBTPhysicsList()
    // Ion Physics
    RegisterPhysics(new G4IonQMDPhysics(verbose));
    RegisterPhysics(new G4IonElasticPhysics(verbose));
-   RegisterPhysics(new G4IonBinaryCascadePhysics(verbose));
+   //RegisterPhysics(new G4IonBinaryCascadePhysics(verbose));
 }
 
 IBTPhysicsList::~IBTPhysicsList()

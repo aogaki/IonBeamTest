@@ -4,12 +4,9 @@
 #include "IBTEventAction.hpp"
 
 
-IBTActionInitialization::IBTActionInitialization(G4bool monoFlag, G4double ene)
+IBTActionInitialization::IBTActionInitialization()
    : G4VUserActionInitialization()
-{
-   fMonoFlag = monoFlag;
-   fEnergy = ene;
-}
+{}
 
 IBTActionInitialization::~IBTActionInitialization()
 {}
@@ -21,7 +18,7 @@ void IBTActionInitialization::BuildForMaster() const
 
 void IBTActionInitialization::Build() const
 {
-   SetUserAction(new IBTPrimaryGeneratorAction(fMonoFlag, fEnergy));
+   SetUserAction(new IBTPrimaryGeneratorAction());
    SetUserAction(new IBTRunAction());
    SetUserAction(new IBTEventAction());
 }
